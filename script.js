@@ -6,6 +6,8 @@ const currentYear = 2024;
 let currentMonth = today.getMonth();
 const startDay = today.getDate();
 
+const clickSound = document.getElementById('click-sound');
+
 function createCalendar(month) {
     const calendar = document.getElementById('calendar');
     calendar.innerHTML = '';
@@ -35,6 +37,9 @@ function createCalendar(month) {
         if (month === currentMonth && day === startDay) {
             cell.className = 'today';
         }
+        cell.addEventListener('click', () => {
+            clickSound.play();
+        });
         row.appendChild(cell);
         if ((startDayOfWeek + day) % 7 === 0) {
             table.appendChild(row);
